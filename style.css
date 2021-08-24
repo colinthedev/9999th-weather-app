@@ -72,6 +72,55 @@ body{
     height: 150px;
     display: block;
     margin: 0 auto;
+    animation: iconAnimation 10s infinite linear;
+}
+
+@keyframes iconAnimation {
+    0%  { -webkit-transform: rotate(1deg);  }
+    5%  { -webkit-transform: rotate(2deg);  }
+    10% { -webkit-transform: rotate(3deg);  }
+    15% { -webkit-transform: rotate(4deg);  }
+    20% { -webkit-transform: rotate(5deg);  }
+    25% { -webkit-transform: rotate(4deg);  }
+    30% { -webkit-transform: rotate(3deg);  }
+    35% { -webkit-transform: rotate(2deg);  }
+    40% { -webkit-transform: rotate(1deg);  }
+    45% { -webkit-transform: rotate(0deg);  }
+    50% { -webkit-transform: rotate(-1deg); }
+    55% { -webkit-transform: rotate(-2deg); } 
+    60% { -webkit-transform: rotate(-3deg); } 
+    65% { -webkit-transform: rotate(-4deg); } 
+    70% { -webkit-transform: rotate(-5deg); } 
+    75% { -webkit-transform: rotate(-4deg); } 
+    80% { -webkit-transform: rotate(-3deg); } 
+    85% { -webkit-transform: rotate(-2deg); } 
+    90% { -webkit-transform: rotate(-1deg); } 
+    95% { -webkit-transform: rotate(0deg);  } 
+    100%{ -webkit-transform: rotate(1deg);  } 
+}
+
+@-webkit-keyframes iconAnimation { 
+    0%  { -webkit-transform: rotate(1deg); }
+    5%  { -webkit-transform: rotate(2deg); }
+    10% { -webkit-transform: rotate(3deg); }
+    15% { -webkit-transform: rotate(4deg); }
+    20% { -webkit-transform: rotate(5deg); }
+    25% { -webkit-transform: rotate(4deg); }
+    30% { -webkit-transform: rotate(3deg); }
+    35% { -webkit-transform: rotate(2deg); }
+    40% { -webkit-transform: rotate(1deg); }
+    45% { -webkit-transform: rotate(0deg); }
+    50% { -webkit-transform: rotate(-1deg); }
+    55% { -webkit-transform: rotate(-2deg); } 
+    60% { -webkit-transform: rotate(-3deg); } 
+    65% { -webkit-transform: rotate(-4deg); } 
+    70% { -webkit-transform: rotate(-5deg); } 
+    75% { -webkit-transform: rotate(-4deg); } 
+    80% { -webkit-transform: rotate(-3deg); } 
+    85% { -webkit-transform: rotate(-2deg); } 
+    90% { -webkit-transform: rotate(-1deg); } 
+    95% { -webkit-transform: rotate(0deg); } 
+    100%{ -webkit-transform: rotate(1deg); } 
 }
 
 .temperature-value{
@@ -121,3 +170,8 @@ body{
     font-size: 1.2em;
 }
 
+.lightText {
+    font-size: .8em;
+    letter-spacing: .08em;
+    color: #f3eded;
+}

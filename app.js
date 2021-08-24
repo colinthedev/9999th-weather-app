@@ -80,19 +80,19 @@ function getWeather(latitude, longitude) {
 
 // Display weather data to UI
 function displayWeather() {
-    locationElement.innerHTML = `${weather.city}, ${weather.country}`;      // City name Country name
-    iconElement.innerHTML = `<img src="icons/${weather.iconId}.png"/>`;     // Icon
-    tempElement.innerHTML = `${weather.temperature.value}°<span>F</span>`;  // Temp
-    descElement.innerHTML = `${weather.description}`;                       // Short description
-    descElementDaily.innerHTML = dailyDescription();                        // Daily description
-    sunRiseElement.innerHTML = `Sunrise <br>${weather.sunrise} AM`;         // Sunrise
-    sunSetElement.innerHTML = `Sunset <br>${weather.sunset} PM`;            // Sunset
-    windElement.innerHTML = `Wind <br>${weather.wind} mph`;                 // Wind speed
-    gustElement.innerHTML = `Gust <br>${weather.gust} mph`;                 // Gust speed
-    feelsLikeElement.innerHTML = `Feels-like <br>${weather.feels_like} °F`; // Feels-like
-    humidityElement.innerHTML = `Humidity <br>${weather.humidity}%`;        // Humidity 
-    tempMinElement.innerHTML = `Min-temp <br>${weather.temp_min} °F`;       // Temp_min
-    tempMaxElement.innerHTML = `Max-temp <br>${weather.temp_max} °F`;       // Temp_max
+    locationElement.innerHTML = `${weather.city}, ${weather.country}`;                                      // City/Country name
+    iconElement.innerHTML = `<img src="icons/${weather.iconId}.png"/>`;                                     // Icon
+    tempElement.innerHTML = `${weather.temperature.value}°<span>F</span>`;                                  // Temp
+    descElement.innerHTML = `${weather.description}`;                                                       // Short description
+    descElementDaily.innerHTML = dailyDescription();                                                        // Daily description
+    sunRiseElement.innerHTML = `<span class="lightText">Sunrise</span> <br>${weather.sunrise} AM`;          // Sunrise
+    sunSetElement.innerHTML = `<span class="lightText">Sunset</span> <br>${weather.sunset} PM`;             // Sunset
+    windElement.innerHTML = `<span class="lightText">Wind</span> <br>${weather.wind} mph`;                  // Wind speed
+    gustElement.innerHTML = `<span class="lightText">Gust</span> <br>${weather.gust} mph`;                  // Gust speed
+    feelsLikeElement.innerHTML = `<span class="lightText">Feels-like</span> <br>${weather.feels_like} °F`;  // Feels-like
+    humidityElement.innerHTML = `<span class="lightText">Humidity</span> <br>${weather.humidity}%`;         // Humidity 
+    tempMinElement.innerHTML = `<span class="lightText">Min-temp</span> <br>${weather.temp_min} °F`;        // Temp_min
+    tempMaxElement.innerHTML = `<span class="lightText">Max-temp</span> <br>${weather.temp_max} °F`;        // Temp_max
 }
 
 // Daily description of weather forecast
