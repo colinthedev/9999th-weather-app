@@ -57,7 +57,7 @@ function getWeather(latitude, longitude) {
             weather.city = data.name;                                        // City name
             weather.country = data.sys.country;                              // Country name
             weather.wind = Math.round(data.wind.speed);                      // Wind speed
-            weather.humidity = data.main.humidity;
+            weather.humidity = data.main.humidity;                           // Humidity 
         })
         .then(function () {
             displayBackground();
@@ -86,8 +86,8 @@ function displayWeather() {
     descElement.innerHTML = `${weather.description}`;                       // Description
     iconElement.innerHTML = `<img src="icons/${weather.iconId}.png"/>`;     // Icon
     locationElement.innerHTML = `${weather.city}, ${weather.country}`;      // City name Country name
-    windElement.innerHTML = `wind <br>${weather.wind} mph`;                          // Wind speed
-    humidityElement.innerHTML = `humidity <br>${weather.humidity}%`;
+    windElement.innerHTML = `wind <br>${weather.wind} mph`;                 // Wind speed
+    humidityElement.innerHTML = `humidity <br>${weather.humidity}%`;        // Humidity 
 }
 
 // Convert to C
