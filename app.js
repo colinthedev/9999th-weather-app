@@ -2,9 +2,10 @@
 const iconElement = document.querySelector(".weather-icon");
 const tempElement = document.querySelector(".temperature-value p");
 const descElement = document.querySelector(".temperature-description p");
+const descElementDaily = document.querySelector(".daily-description p");
 const locationElement = document.querySelector(".location p");
-const windElement = document.querySelector(".wind-value p");
-const humidityElement = document.querySelector(".humidity-value p");
+const windElement = document.querySelector(".wind-value");
+const humidityElement = document.querySelector(".humidity-value");
 // Notification
 const notificationElement = document.querySelector(".notification");
 
@@ -51,11 +52,11 @@ function getWeather(latitude, longitude) {
             return data;
         })
         .then(function (data) {
-            weather.temperature.value = Math.floor(data.main.temp - KELVIN); // Temp
-            weather.description = data.weather[0].description;               // Description
-            weather.iconId = data.weather[0].icon;                           // Icon
             weather.city = data.name;                                        // City name
             weather.country = data.sys.country;                              // Country name
+            weather.iconId = data.weather[0].icon;                           // Icon
+            weather.temperature.value = Math.floor(data.main.temp - KELVIN); // Temp
+            weather.description = data.weather[0].description;               // Description
             weather.wind = Math.round(data.wind.speed);                      // Wind speed
             weather.humidity = data.main.humidity;                           // Humidity 
         })
@@ -82,10 +83,10 @@ function displayBackground() {
 
 // Display weather data to UI
 function displayWeather() {
+    locationElement.innerHTML = `${weather.city}, ${weather.country}`;      // City name Country name
+    iconElement.innerHTML = `<img src="icons/${weather.iconId}.png"/>`;     // Icon
     tempElement.innerHTML = `${weather.temperature.value}°<span>F</span>`;  // Temp
     descElement.innerHTML = `${weather.description}`;                       // Description
-    iconElement.innerHTML = `<img src="icons/${weather.iconId}.png"/>`;     // Icon
-    locationElement.innerHTML = `${weather.city}, ${weather.country}`;      // City name Country name
     windElement.innerHTML = `wind <br>${weather.wind} mph`;                 // Wind speed
     humidityElement.innerHTML = `humidity <br>${weather.humidity}%`;        // Humidity 
 }
