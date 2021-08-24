@@ -44,19 +44,24 @@ body{
     flex-direction: column;
     justify-content: space-between;
     padding: 10px 0 10px 0;
-    max-height: 100px;
+    max-height: 150px;
     overflow: auto;
     position: relative;
+    width: 80%;
+    margin: auto;
 }
 
 .row {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
-
     min-height: 50px;
     overflow-y: scroll;
     position: relative;
+}
+
+.row span {
+    min-width: 85px;
 }
 
 .weather-icon{
@@ -87,6 +92,11 @@ body{
 
 .temperature-value span{
     font-size: 0.5em;
+}
+
+.daily-description p {
+    line-height: 1.4em;
+    margin: 25px 4% 25px 4%;
 }
 
 .temperature-description{
