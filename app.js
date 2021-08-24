@@ -1,9 +1,11 @@
-// SELECT ELEMENTS
+// Weather data
 const iconElement = document.querySelector(".weather-icon");
 const tempElement = document.querySelector(".temperature-value p");
 const descElement = document.querySelector(".temperature-description p");
 const locationElement = document.querySelector(".location p");
-const windElement = document.querySelector(".wind-value p")
+const windElement = document.querySelector(".wind-value p");
+const humidityElement = document.querySelector(".humidity-value p");
+// Notification
 const notificationElement = document.querySelector(".notification");
 
 // Store data 
@@ -55,6 +57,7 @@ function getWeather(latitude, longitude) {
             weather.city = data.name;                                        // City name
             weather.country = data.sys.country;                              // Country name
             weather.wind = Math.round(data.wind.speed);                      // Wind speed
+            weather.humidity = data.main.humidity;
         })
         .then(function () {
             displayBackground();
@@ -64,14 +67,16 @@ function getWeather(latitude, longitude) {
 
 // Change background depending on if its day/night (using icon to check)
 function displayBackground() {
-    let background = document.querySelector('.container');
-    let dayTime = weather.iconId.includes('d');
-    let nightTime = weather.iconId.includes('n');
+    const background = document.querySelector('.container');
+    const dayTime = weather.iconId.includes('d');
+    const nightTime = weather.iconId.includes('n');
+    const dayBackground = 'linear-gradient(15deg, rgba(248, 194, 130, 1), rgba(227, 130, 163, 1), rgba(145, 77, 214, 1))';
+    const nightBackground = 'linear-gradient(15deg, rgba(108, 45, 189, 1), rgba(53, 32, 155, 1))';
 
     if (dayTime == true) {
-        background.style.backgroundColor = "yellow";
+        background.style.backgroundImage = `${dayBackground}`;
     } else if (nightTime == true) {
-        background.style.backgroundColor = "pink";
+        background.style.backgroundImage = `${nightBackground}`;
     }
 }
 
@@ -81,10 +86,8 @@ function displayWeather() {
     descElement.innerHTML = `${weather.description}`;                       // Description
     iconElement.innerHTML = `<img src="icons/${weather.iconId}.png"/>`;     // Icon
     locationElement.innerHTML = `${weather.city}, ${weather.country}`;      // City name Country name
-    windElement.innerHTML = `${weather.wind}-mph`                           // Wind speed
-    
-    // console.log(iconElement)
-    // console.log(weather)
+    windElement.innerHTML = `wind <br>${weather.wind} mph`;                          // Wind speed
+    humidityElement.innerHTML = `humidity <br>${weather.humidity}%`;
 }
 
 // Convert to C
