@@ -9,16 +9,10 @@ body{
     background-color: #0f0f0f;
 }
 
-.notification{
-    background-color: #ad1623;
-    display: none;
-}
-
-.notification p{
-    color: #ececec;
-    font-size: 1.2em;
-    margin: 0;
-    padding: 10px 0;
+.lightText {
+    font-size: .8em;
+    letter-spacing: .08em;
+    color: #f3eded;
 }
 
 .center {
@@ -62,6 +56,36 @@ body{
 
 .row span {
     min-width: 85px;
+}
+
+.row-5 {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.row-5-outer {
+    display: flex;
+    flex-direction: column;
+}
+
+.row-5-inner {
+    display: flex;
+    flex-direction: row;
+}
+
+.notification{
+    background-color: #ad1623;
+    display: none;
+}
+
+.notification p{
+    color: #ececec;
+    font-size: 1.2em;
+    margin: 0;
+    padding: 10px 0;
 }
 
 .weather-icon{
@@ -143,11 +167,6 @@ body{
     font-size: 0.5em;
 }
 
-.daily-description p {
-    line-height: 1.4em;
-    margin: 25px 4% 25px 4%;
-}
-
 .temperature-description{
     font-size: 1.3em;
 }
@@ -156,6 +175,11 @@ body{
     padding: 8px;
     margin: 0;
     font-size: 1.2em;
+}
+
+.daily-description p {
+    line-height: 1.4em;
+    margin: 25px 4% 25px 4%;
 }
 
 .location{
@@ -170,8 +194,26 @@ body{
     font-size: 1.2em;
 }
 
-.lightText {
-    font-size: .8em;
-    letter-spacing: .08em;
-    color: #f3eded;
+/* Air quality bar graph */
+.quality-container {
+    background-color: #fdfdfd;
+    display: flex;
+    justify-content: space-evenly;
+    position: relative;
+    width: 100px;
+}
+
+.circle {
+    background-color: rgb(102, 92, 92);
+    color: #999;
+    height: 30px;
+    width: 19px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: .4s ease;
+}
+
+.circle.active {
+    background-color: rgb(27, 190, 35);
 }

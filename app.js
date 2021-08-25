@@ -1,4 +1,4 @@
-// Weather data
+// Weather data API
 const locationElement = document.querySelector(".location p");              // Location
 const iconElement = document.querySelector(".weather-icon");                // Icon
 const tempElement = document.querySelector(".temperature-value p");         // Temp
@@ -39,6 +39,7 @@ function setPosition(position) {
     let longitude = position.coords.longitude;
 
     getWeather(latitude, longitude);
+    getAirQuality(latitude, longitude);
 }
 
 // Show error if geolocation disabled
@@ -47,7 +48,7 @@ function showError(error) {
     notificationElement.innerHTML = `<p> ${error.message} </p>`;
 }
 
-// Get the data wanted from api
+// Get the weather data wanted from api
 function getWeather(latitude, longitude) {
     let api = `http://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${key}`;
     console.log(api)
@@ -71,7 +72,7 @@ function getWeather(latitude, longitude) {
             weather.humidity = data.main.humidity;                           // Humidity 
             weather.temp_min = Math.floor(data.main.temp_min - KELVIN);      // Temp_min
             weather.temp_max = Math.floor(data.main.temp_max - KELVIN);      // Temp_max
-        }) 
+        })
         .then(function () {
             displayBackground();
             displayWeather();
@@ -146,3 +147,75 @@ tempElement.addEventListener('click', function () {
         weather.temperature.unit = 'celsius'
     }
 })
+
+// Air quality API
+const airQualityElement = document.querySelector(".air_quality");
+const airQualityDescription = document.querySelector(".air_quality_description");
+
+const key2 = '19a61b27e0946e4952f2c218d9652722';
+
+// Store data 
+const airQuality = {};
+
+// Get the air pollution data wanted from api
+function getAirQuality(latitude, longitude) {
+    let airQualityApi = `http://api.openweathermap.org/data/2.5/air_pollution?lat=${latitude}&lon=${longitude}&appid=${key2}`;
+    console.log(airQualityApi)
+
+    fetch(airQualityApi)
+        .then(function (response) {
+            let pollutionData = response.json();
+            return pollutionData;
+        })
+        .then(function (pollutionData) {
+            airQuality.rating = pollutionData.list[0].main.aqi;
+        })
+        .then(function () {
+            displayAirQuality();
+            displayQualityDescription();
+            airQualityGraph();
+        });
+}
+
+// Display air quality rating
+function displayAirQuality() {
+    airQualityElement.innerHTML = `${airQuality.rating}`;
+}
+
+// Display air quality description
+function displayQualityDescription() {
+    return airQualityElement.innerHTML === '1' ? airQualityDescription.innerHTML = 'Good'
+        : airQualityElement.innerHTML === '2' ? airQualityDescription.innerHTML = 'Fair'
+            : airQualityElement.innerHTML === '3' ? airQualityDescription.innerHTML = 'Moderate'
+                : airQualityElement.innerHTML === '4' ? airQualityDescription.innerHTML = 'Poor'
+                    : airQualityElement.innerHTML === '5' ? airQualityDescription.innerHTML = 'Very Poor'
+                        : airQualityDescription.innerHTML = 'N/A'
+}
+
+// Graph air quality based off value
+function airQualityGraph() {
+    let currentActive = 1;
+    let circle = document.querySelectorAll(".circle");
+
+    [...circle].forEach(function (circle, idx) {
+        if (idx < currentActive && airQualityElement.innerHTML === '1') {
+            circle.classList.add('active');
+            currentActive = 1;
+        } else if (idx < currentActive && airQualityElement.innerHTML === '2') {
+            circle.classList.add('active');
+            currentActive = 2;
+        } else if (idx < currentActive && airQualityElement.innerHTML === '3') {
+            circle.classList.add('active');
+            currentActive = 3;
+        } else if (idx < currentActive && airQualityElement.innerHTML === '4') {
+            circle.classList.add('active');
+            currentActive = 4;
+        } else if (idx < currentActive && airQualityElement.innerHTML === '5') {
+            circle.classList.add('active');
+            currentActive = 5;
+        } else {
+            circle.classList.remove('active');
+            currentActive = 0;
+        }
+    })
+}
