@@ -15,6 +15,11 @@ body{
     color: #f3eded;
 }
 
+.graphText {
+    font-size: .75em;
+    color: #fdfdfd;
+}
+
 .center {
     margin: auto;
     text-align: center;
@@ -196,24 +201,31 @@ body{
 
 /* Air quality bar graph */
 .quality-container {
-    background-color: #fdfdfd;
     display: flex;
     justify-content: space-evenly;
-    position: relative;
     width: 100px;
+    height: 30px;
 }
 
 .circle {
-    background-color: rgb(102, 92, 92);
-    color: #999;
+    background-color: #C4C4C4;
     height: 30px;
     width: 19px;
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: .4s ease;
+    border-radius: 2px;
+    border: #fdfdfd .05px solid;
 }
 
 .circle.active {
-    background-color: rgb(27, 190, 35);
+    background-color:#3ac780;
+}
+
+.circle.active-fair {
+    background-color:#eeb54c;
+}
+
+.circle.active-bad {
+    background-color:#b6121a;
 }

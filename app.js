@@ -184,11 +184,11 @@ function displayAirQuality() {
 
 // Display air quality description
 function displayQualityDescription() {
-    return airQualityElement.innerHTML === '1' ? airQualityDescription.innerHTML = 'Good'
-        : airQualityElement.innerHTML === '2' ? airQualityDescription.innerHTML = 'Fair'
-            : airQualityElement.innerHTML === '3' ? airQualityDescription.innerHTML = 'Moderate'
-                : airQualityElement.innerHTML === '4' ? airQualityDescription.innerHTML = 'Poor'
-                    : airQualityElement.innerHTML === '5' ? airQualityDescription.innerHTML = 'Very Poor'
+    return airQualityElement.innerHTML === '1' ? airQualityDescription.innerHTML = '&nbsp;Good'
+        : airQualityElement.innerHTML === '2' ? airQualityDescription.innerHTML = '&nbsp;Fair'
+            : airQualityElement.innerHTML === '3' ? airQualityDescription.innerHTML = '&nbsp;Moderate'
+                : airQualityElement.innerHTML === '4' ? airQualityDescription.innerHTML = '&nbsp;Poor'
+                    : airQualityElement.innerHTML === '5' ? airQualityDescription.innerHTML = '&nbsp;Very Poor'
                         : airQualityDescription.innerHTML = 'N/A'
 }
 
@@ -205,16 +205,15 @@ function airQualityGraph() {
             circle.classList.add('active');
             currentActive = 2;
         } else if (idx < currentActive && airQualityElement.innerHTML === '3') {
-            circle.classList.add('active');
+            circle.classList.add('active-fair');
             currentActive = 3;
         } else if (idx < currentActive && airQualityElement.innerHTML === '4') {
-            circle.classList.add('active');
+            circle.classList.add('active-fair');
             currentActive = 4;
         } else if (idx < currentActive && airQualityElement.innerHTML === '5') {
-            circle.classList.add('active');
+            circle.classList.add('active-bad');
             currentActive = 5;
         } else {
-            circle.classList.remove('active');
             currentActive = 0;
         }
     })
