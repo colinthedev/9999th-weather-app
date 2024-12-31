@@ -31,9 +31,6 @@ body{
     margin: 0 auto;
     border-radius: 10px;
     padding-bottom : 50px;
-    
-    max-height: 425px;
-    overflow: auto; 
     position: relative;
 }
 
